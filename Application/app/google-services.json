@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "789452579431",
+    "project_id": "miam-app-helb",
+    "storage_bucket": "miam-app-helb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789452579431:android:a37df66394fed915f0eac2",
+        "android_client_info": {
+          "package_name": "com.example.miamapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789452579431-t8u3hj0bvait6veea0pqnao8vk7aahvk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM2w0gbTdYamDVHzZkB3kwKQKcCi70GO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789452579431-t8u3hj0bvait6veea0pqnao8vk7aahvk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

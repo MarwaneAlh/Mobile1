@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
 
     android:background="@drawable/homepageapplication"
-    tools:context=".SplashActivity">
+    tools:context="com.example.miamapp.SplashActivity">
 
   </androidx.constraintlayout.widget.ConstraintLayout>
     <!-- Ligne de background affecte ici l'image de fond -->

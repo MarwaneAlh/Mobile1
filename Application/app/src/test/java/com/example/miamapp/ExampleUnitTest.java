@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.miamapp;
 
 import org.junit.Test;
 
