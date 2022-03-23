@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 
 import com.example.miamapp.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,8 +18,13 @@ public class MainActivity extends AppCompatActivity {
         //code clean
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Creation de l'ecran splash
-
 
     }
+
+    public void logout(View view){
+        FirebaseAuth.getInstance().signOut();
+        startActivity((new Intent(getApplicationContext(),LoginActivity.class)));
+        finish();
+    }
+
 }
