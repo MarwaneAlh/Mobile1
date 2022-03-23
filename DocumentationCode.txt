@@ -1,0 +1,7 @@
+Documentation:
+
+-Splash screen = ecran qui s'affiche au lancement de l'application
+Implementation de la classe SplashActivity , placement de l'imaage dans les drawables,
+Modification du fichier xml du background avec l'image
+Changement dans le fichier AndroidManifest.xml
+-Ecran password et login 
