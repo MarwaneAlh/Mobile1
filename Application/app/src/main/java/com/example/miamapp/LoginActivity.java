@@ -18,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText mEmail,mPassword;
+    EditText mEmail, mPassword;
     Button mloginbtn;
     TextView mregisterBtn;
     FirebaseAuth fAuth;
@@ -29,10 +29,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        mEmail= findViewById(R.id.email);
-        mPassword =findViewById(R.id.password);
-        mloginbtn =findViewById(R.id.connexionBtn);
-        mregisterBtn =findViewById(R.id.inscriptionText);
+        mEmail = findViewById(R.id.email);
+        mPassword = findViewById(R.id.password);
+        mloginbtn = findViewById(R.id.connexionBtn);
+        mregisterBtn = findViewById(R.id.inscriptionText);
         fAuth = FirebaseAuth.getInstance();
 
         mloginbtn.setOnClickListener(new View.OnClickListener() {
@@ -40,34 +40,32 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
-                if(TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     mEmail.setError("Veuillez entrer un email");
                     return;
                 }
-                if(TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(password)) {
                     mPassword.setError("Veuillez entrer un mot de passe");
                     return;
                 }
 
-                if(password.length()<6){
+                if (password.length() < 6) {
                     mPassword.setError("Veuillez entrer un mot de passe de minimum 6 caracteres");
                 }
 
-                fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Connexion réussie !"
                                     , Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        }else{
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        } else {
                             Toast.makeText(LoginActivity.this, "Erreur connexion échoué" +
-                                    " !" +task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    " !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
-
 
 
             }
@@ -76,12 +74,13 @@ public class LoginActivity extends AppCompatActivity {
         mregisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
             }
         });
 
-    /*if(fAuth.getCurrentUser() !=null){
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-        finish();*/
+        if (fAuth.getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+        }
     }
-    }
+}
