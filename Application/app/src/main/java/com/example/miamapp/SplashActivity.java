@@ -15,6 +15,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_splash);
         //Creation d'un thread qui va se lancer 3 milli secondes
         //Gestions des erreurs ici gérer
