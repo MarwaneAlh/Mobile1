@@ -6,14 +6,70 @@
     android:layout_height="match_parent"
     tools:context="com.example.miamapp.MainActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="570sp"
+        android:background="@drawable/ic_wave__2_"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-2dp" >
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="272dp"
+            android:layout_height="53dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="120dp"
+            android:layout_marginBottom="499dp"
+            android:fontFamily="sans-serif-black"
+            android:textColor="#000000"
+            android:textSize="34sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="161dp"
+            android:layout_height="55dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="77dp"
+            android:layout_marginEnd="224dp"
+            android:layout_marginBottom="438dp"
+            android:fontFamily="@font/bebas_neue"
+            android:text="CATEGORY"
+            android:textColor="#000000"
+            android:textSize="34sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cartShop"
+            android:layout_width="wrap_content"
+            android:layout_height="82dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="306dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="467dp"
+            android:background="@drawable/logocart" />
+    </RelativeLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/ingredientButton"
         android:layout_width="381dp"
         android:layout_height="145dp"
-        android:background="@drawable/categorieingredient"
+        android:background="@drawable/categorieingredientv2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.815" />
@@ -22,19 +78,19 @@
         android:id="@+id/deliveryFoodButton"
         android:layout_width="381dp"
         android:layout_height="145dp"
-        android:background="@drawable/categoriedeliveryfood"
+        android:background="@drawable/categoriedeliveryfoodv2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.532" />
+        app:layout_constraintVertical_bias="0.522" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/recipesButton"
         android:layout_width="381dp"
         android:layout_height="145dp"
-        android:background="@drawable/categorierecipes"
+        android:background="@drawable/categorierecipesv2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
@@ -52,34 +108,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="169dp"
-        android:layout_height="41dp"
-        android:textColor="#9C27B0"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.148"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.046" />
-
-    <TextView
-        android:id="@+id/welcomBack"
-        android:layout_width="171dp"
-        android:layout_height="29dp"
-        android:text="Order and Eat"
-        android:textColor="#636363"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.152"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.105" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
