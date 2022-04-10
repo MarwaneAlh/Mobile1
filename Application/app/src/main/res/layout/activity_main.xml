@@ -6,18 +6,41 @@
     android:layout_height="match_parent"
     tools:context="com.example.miamapp.MainActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="286dp"
-        android:layout_height="92dp"
-        android:text="Welcom to miam app"
-        android:textSize="34sp"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ingredientButton"
+        android:layout_width="381dp"
+        android:layout_height="145dp"
+        android:background="@drawable/categorieingredient"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintVertical_bias="0.815" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/deliveryFoodButton"
+        android:layout_width="381dp"
+        android:layout_height="145dp"
+        android:background="@drawable/categoriedeliveryfood"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.532" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/recipesButton"
+        android:layout_width="381dp"
+        android:layout_height="145dp"
+        android:background="@drawable/categorierecipes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.233" />
 
     <Button
         android:id="@+id/deconnectBtn"
@@ -28,31 +51,35 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.886" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="223dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="16dp"
-        android:text="Recipes of the day"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="316dp"
-        android:layout_height="176dp"
+        android:id="@+id/username"
+        android:layout_width="169dp"
+        android:layout_height="41dp"
+        android:textColor="#9C27B0"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/deconnectBtn"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.148"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.162" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.046" />
+
+    <TextView
+        android:id="@+id/welcomBack"
+        android:layout_width="171dp"
+        android:layout_height="29dp"
+        android:text="Order and Eat"
+        android:textColor="#636363"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.105" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

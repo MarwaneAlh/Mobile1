@@ -1,5 +1,6 @@
 package com.example.miamapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -22,6 +23,13 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.miamapp.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,6 +43,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     String url ="https://api.spoonacular.com/recipes/716429" +
             "/information?includeNutrition=false?&apiKey=e778f2da2efe4c31a2c0151e0ac2e79e";
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore ;
+    TextView nameuser;
 
 
     @Override
@@ -43,11 +54,23 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-        TextView t = findViewById(R.id.textView4);
+       // TextView t = findViewById(R.id.textView4);
+        nameuser=findViewById(R.id.username);
+        fAuth = FirebaseAuth.getInstance();
+        fStore=FirebaseFirestore.getInstance();
+        String userID;
 
+        FirebaseUser actualuser=FirebaseAuth.getInstance().getCurrentUser();
+        userID=fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference=fStore.collection("users").document(userID);
+       documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+           @Override
+           public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                nameuser.setText("Hi, "+value.getString("fullName")+" ! ");
+           }
+       });
 
-
-        RequestQueue queue= Volley.newRequestQueue(MainActivity.this);
+       /* RequestQueue queue= Volley.newRequestQueue(MainActivity.this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,
                 null, new Response.Listener<JSONObject>() {
             @Override
@@ -71,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
         queue.add(jsonObjectRequest);
 
-
+*/
     }
     public void logout(View view){
         FirebaseAuth.getInstance().signOut();
