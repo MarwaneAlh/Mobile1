@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore ;
     TextView nameuser;
-    String tmp;
+    Button open_ingredient_windows;
 
 
 
@@ -71,11 +72,6 @@ public class MainActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
         String userID;
-
-
-
-
-        FirebaseUser actualuser=FirebaseAuth.getInstance().getCurrentUser();
         userID=fAuth.getCurrentUser().getUid();
         DocumentReference documentReference=fStore.collection("users").document(userID);
        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
@@ -103,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.menuRecipes:
                     case R.id.menuDeliveryFood:
                     case R.id.Ingredient:
+                        startActivity(new Intent(getApplicationContext(), IngredientActivity.class));
+                        return true;
                     case R.id.Signout:
                         logout();
                         return true;
@@ -111,7 +109,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        open_ingredient_windows=findViewById(R.id.ingredientButton);
+        open_ingredient_windows.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), IngredientActivity.class));
+            }
+        });
 
        /* RequestQueue queue= Volley.newRequestQueue(MainActivity.this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,
@@ -144,6 +148,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity((new Intent(getApplicationContext(),LoginActivity.class)));
         finish();
     }
+
+
 
 
 
