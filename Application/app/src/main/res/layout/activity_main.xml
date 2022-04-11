@@ -9,20 +9,24 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:background="@color/white"
     >
 
     <LinearLayout
         android:id="@+id/layoutToolBar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="#a200ff"
+        android:background="#632A95"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <ImageView
             android:id="@+id/imageMenu"
@@ -35,16 +39,18 @@
             ></ImageView>
 
         <ImageView
-            android:layout_width="328dp"
+            android:layout_width="296dp"
             android:layout_height="180dp"
+            android:layout_gravity="center"
             android:src="@drawable/logoapp">
 
         </ImageView>
 
         <ImageView
             android:id="@+id/imageshop"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="47dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/ic_shopping_cart"
             android:tint="@color/white"
 
@@ -53,8 +59,8 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="570sp"
+        android:layout_width="418dp"
+        android:layout_height="680dp"
         android:background="@drawable/ic_wave__2_"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,96 +70,67 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginEnd="233dp"
-            android:layout_marginBottom="516dp"
-            android:fontFamily="sans-serif-black"
-            android:textColor="#6C2593"
-            android:textSize="25dp"
-            android:textStyle="bold|italic" />
-
-        <TextView
             android:id="@+id/category"
-            android:layout_width="113dp"
-            android:layout_height="57dp"
+            android:layout_width="wrap_content"
+            android:layout_height="61dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="53dp"
-            android:layout_marginEnd="148dp"
-            android:layout_marginBottom="460dp"
+            android:layout_marginStart="131dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="135dp"
+            android:layout_marginBottom="600dp"
             android:fontFamily="@font/bebas_neue"
             android:text="CATEGORY"
             android:textColor="#FFFFFF"
-            android:textSize="34sp" />
+            android:textSize="40sp" />
 
         <androidx.appcompat.widget.AppCompatButton
 
             android:id="@+id/recipesButton"
-            android:layout_width="381dp"
-            android:layout_height="145dp"
+            android:layout_width="375dp"
+            android:layout_height="205dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="99dp"
-            android:layout_marginEnd="14dp"
-            android:layout_marginBottom="326dp"
-            android:background="@drawable/categorierecipesv2" />
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="63dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginBottom="412dp"
+            android:background="@drawable/categirierecipebeta" />
 
         <androidx.appcompat.widget.AppCompatButton
 
             android:id="@+id/deliveryFoodButton"
-            android:layout_width="381dp"
-            android:layout_height="145dp"
+            android:layout_width="375dp"
+            android:layout_height="203dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="256dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginBottom="169dp"
-            android:background="@drawable/categoriedeliveryfoodv2" />
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="272dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginBottom="205dp"
+            android:background="@drawable/categiriedeliverybeta" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/ingredientButton"
-            android:layout_width="381dp"
-            android:layout_height="145dp"
+            android:layout_width="374dp"
+            android:layout_height="194dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="411dp"
-            android:layout_marginEnd="14dp"
-            android:layout_marginBottom="14dp"
-            android:background="@drawable/categorieingredientv2" />
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="478dp"
+            android:layout_marginEnd="35dp"
+            android:background="@drawable/categirieingredientbeta" />
 
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/deconnectBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="logout"
-        android:text="DECONNEXION"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 <com.google.android.material.navigation.NavigationView
     android:id="@+id/navigationView"
@@ -162,6 +139,8 @@
     app:headerLayout="@layout/layout_navigation_header"
     android:layout_gravity="start"
     app:menu="@menu/navigation_menu"
+    android:background="#632A95"
+    app:itemTextColor="@color/white"
     ></com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -1,5 +1,6 @@
 package com.example.miamapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
@@ -50,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore ;
     TextView nameuser;
-    TextView test;
     String tmp;
 
 
@@ -61,10 +62,11 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
-        NavigationView nav=drawerLayout.findViewById(R.id.navigationView);
 
-        nameuser=findViewById(R.id.username);
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        NavigationView nav=(NavigationView) drawerLayout.findViewById(R.id.navigationView);
+        View headerView=nav.getHeaderView(0);
+        nameuser=(TextView) headerView.findViewById(R.id.usernames);
 
         fAuth = FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
@@ -79,10 +81,7 @@ public class MainActivity extends AppCompatActivity {
        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
            @Override
            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                nameuser.setText("Hi, "+value.getString("fullName")+" ! ");
-
-               tmp=value.getString("fullName");
-               System.out.println(tmp);
+              nameuser.setText(value.getString("fullName"));
            }
        });
 
@@ -93,6 +92,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+        nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.ShopCart:
+                    case R.id.menuRecipes:
+                    case R.id.menuDeliveryFood:
+                    case R.id.Ingredient:
+                    case R.id.Signout:
+                        logout();
+                        return true;
+                }
+                return false;
             }
         });
 
@@ -124,10 +139,12 @@ public class MainActivity extends AppCompatActivity {
 
 */
     }
-    public void logout(View view){
+    public void logout(){
         FirebaseAuth.getInstance().signOut();
         startActivity((new Intent(getApplicationContext(),LoginActivity.class)));
         finish();
     }
+
+
 
 }

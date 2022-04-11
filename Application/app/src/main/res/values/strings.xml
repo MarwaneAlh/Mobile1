@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="recipes">Recipes</string>
+    <string name="delivery_food">Delivery-Food</string>
+    <string name="ingredient">Ingredient</string>
+    <string name="sign_out">Sign out</string>
+    <string name="shopcart">ShopCart</string>
 </resources>

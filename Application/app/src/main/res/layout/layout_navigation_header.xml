@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="#632A95">
+
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/imageprofile"
@@ -11,11 +14,14 @@
         android:layout_height="90dp"
         android:scaleType="centerCrop"
         android:src="@drawable/headprofil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:riv_oval="true"
-        />
-<View
+        app:riv_oval="true" />
+
+    <View
     android:id="@+id/viewSupporter"
     android:layout_width="1dp"
     android:layout_height="1dp"
@@ -26,15 +32,30 @@
 
     <TextView
         android:id="@+id/usernames"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="."
-        android:textColor="@color/black"
-        android:textSize="18sp"
+        android:layout_width="114dp"
+        android:layout_height="42dp"
+
+        android:layout_marginStart="88dp"
+        android:layout_marginBottom="4dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/viewSupporter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageprofile" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="82dp"
+        android:layout_height="37dp"
+        android:text="Hello,"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toEndOf="@+id/imageprofile"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

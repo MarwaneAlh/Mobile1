@@ -2,27 +2,35 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/ShopCart"
-        android:title="ShopCart">
+        android:title="@string/shopcart"
+        android:icon="@drawable/ic_cart"
+        >
 
     </item>
     <item
         android:id="@+id/menuRecipes"
-        android:title="Recipes">
+        android:title="@string/recipes"
+        android:icon="@drawable/ic_food">
 
     </item>
     <item
         android:id="@+id/menuDeliveryFood"
-        android:title="Delivery-Food">
+        android:title="@string/delivery_food"
+        android:icon="@drawable/ic_baseline_fastfood">
 
     </item>
     <item
         android:id="@+id/Ingredient"
-        android:title="Ingredient">
+        android:title="@string/ingredient"
+        android:icon="@drawable/ic_baseline_restaurant_menu">
 
     </item>
     <item
         android:id="@+id/Signout"
-        android:title="Sign out">
+        android:title="@string/sign_out"
+        android:textSize="10dp"
+        android:icon="@drawable/ic_baseline_mood_bad"
+        >
 
     </item>
 
