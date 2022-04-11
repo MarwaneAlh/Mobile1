@@ -1,7 +1,10 @@
 package com.example.miamapp;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +25,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.miamapp.R;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -46,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore ;
     TextView nameuser;
+    TextView test;
+    String tmp;
+
 
 
     @Override
@@ -54,11 +61,17 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-       // TextView t = findViewById(R.id.textView4);
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        NavigationView nav=drawerLayout.findViewById(R.id.navigationView);
+
         nameuser=findViewById(R.id.username);
+
         fAuth = FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
         String userID;
+
+
+
 
         FirebaseUser actualuser=FirebaseAuth.getInstance().getCurrentUser();
         userID=fAuth.getCurrentUser().getUid();
@@ -67,8 +80,23 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 nameuser.setText("Hi, "+value.getString("fullName")+" ! ");
+
+               tmp=value.getString("fullName");
+               System.out.println(tmp);
            }
        });
+
+
+
+        findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+
 
        /* RequestQueue queue= Volley.newRequestQueue(MainActivity.this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,

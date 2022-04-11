@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imageprofile"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/headprofil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_oval="true"
+        />
+<View
+    android:id="@+id/viewSupporter"
+    android:layout_width="1dp"
+    android:layout_height="1dp"
+    app:layout_constraintBottom_toBottomOf="@+id/imageprofile"
+    app:layout_constraintStart_toEndOf="@+id/imageprofile"
+    app:layout_constraintStart_toStartOf="@+id/imageprofile"
+    app:layout_constraintTop_toTopOf="@+id/imageprofile"/>
+
+    <TextView
+        android:id="@+id/usernames"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="."
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewSupporter"
+        app:layout_constraintStart_toEndOf="@+id/imageprofile"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
