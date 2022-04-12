@@ -95,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
+                    case R.id.Home:
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        return true;
                     case R.id.ShopCart:
                     case R.id.menuRecipes:
                     case R.id.menuDeliveryFood:
