@@ -4,10 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +32,8 @@ public class IngredientAdaptater extends RecyclerView.Adapter<IngredientAdaptate
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.nameText.setText(list.get(position).getName());
-        holder.priceText.setText(list.get(position).getPrice());
+        holder.priceText.setText("Price : " +list.get(position).getPrice()+" "+list.get(position).getDevice());
+        Picasso.get().load(list.get(position).getPhoto()).into(holder.imageView);
 
 
     }
@@ -44,11 +48,16 @@ public class IngredientAdaptater extends RecyclerView.Adapter<IngredientAdaptate
     View mview;
     public TextView nameText;
     public TextView priceText;
+    public ImageView imageView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             mview=itemView;
             nameText=(TextView) mview.findViewById(R.id.nameview);
             priceText=(TextView) mview.findViewById(R.id.priceview);
+            imageView=(ImageView) mview.findViewById(R.id.imageIngredients);
         }
+
     }
+
+
 }
