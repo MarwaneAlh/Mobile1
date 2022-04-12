@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +37,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 public class IngredientActivity extends AppCompatActivity {
 
@@ -44,7 +47,7 @@ public class IngredientActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore ;
     private List<IngredientData> listofingredient;
-    private IngredientAdaptater ingredientadaptaterlist;
+    private SearchView searchview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,12 +87,18 @@ public class IngredientActivity extends AppCompatActivity {
         });
 
 
+
         listofingredient=new ArrayList<>();
         ingredientadaptater=new IngredientAdaptater(listofingredient);
         recyclerView=findViewById(R.id.listOfIngredients);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(ingredientadaptater);
+
+        searchview=findViewById(R.id.searchviews);
+        searchview.clearFocus();
+
+
 
         fAuth = FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
@@ -113,6 +122,19 @@ public class IngredientActivity extends AppCompatActivity {
             }
         });
 
+        searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return false;
+            }
+        });
+
 
 
     }
@@ -125,4 +147,23 @@ public class IngredientActivity extends AppCompatActivity {
         finish();
     }
 
-}
+    private void filterList(String text){
+        List<IngredientData> filterList=new ArrayList<>();
+        for(IngredientData item:listofingredient){
+            if(item.getName().toLowerCase().contains(text.toLowerCase())){
+                filterList.add(item);
+            }
+        }
+        if(filterList.isEmpty()){
+            Toast.makeText(this, "No Data Founded", Toast.LENGTH_SHORT).show();
+        }else{
+        ingredientadaptater.setList(filterList);
+        }
+
+
+    }
+
+
+
+    }
+

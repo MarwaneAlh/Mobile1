@@ -22,6 +22,11 @@ public class IngredientAdaptater extends RecyclerView.Adapter<IngredientAdaptate
         this.list=list;
     }
 
+    public void setList(List<IngredientData> filterlist){
+        this.list=filterlist;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
