@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".DeliveryFoodActivity"
+            android:exported="false" />
+        <activity
             android:name=".IngredientActivity"
             android:exported="false" />
         <activity
@@ -20,7 +23,7 @@
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".SplashActivity"
             android:exported="true"

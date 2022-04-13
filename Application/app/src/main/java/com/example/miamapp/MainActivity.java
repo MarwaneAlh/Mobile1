@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseFirestore fStore ;
     TextView nameuser;
     Button open_ingredient_windows;
+    Button open_delivery_windows;
 
 
 
@@ -101,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.ShopCart:
                     case R.id.menuRecipes:
                     case R.id.menuDeliveryFood:
+                        startActivity(new Intent(getApplicationContext(),DeliveryFoodActivity.class));
+                        return true;
                     case R.id.Ingredient:
                         startActivity(new Intent(getApplicationContext(), IngredientActivity.class));
                         return true;
@@ -119,6 +122,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), IngredientActivity.class));
             }
         });
+        open_delivery_windows=findViewById(R.id.deliveryFoodButton);
+        open_delivery_windows.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), DeliveryFoodActivity.class));
+            }
+        });
+
+
+
 
        /* RequestQueue queue= Volley.newRequestQueue(MainActivity.this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,

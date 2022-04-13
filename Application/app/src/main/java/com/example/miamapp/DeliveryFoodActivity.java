@@ -16,17 +16,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -36,29 +31,25 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Locale;
 
-public class IngredientActivity extends AppCompatActivity {
-
+public class DeliveryFoodActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    IngredientAdaptater ingredientadaptater;
-    ArrayList<IngredientData> list;
+    FoodAdaptater foodadaptater;
+    ArrayList<FoodData> list;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore ;
-    private List<IngredientData> listofingredient;
+    private List<FoodData> listoffood;
     private SearchView searchview;
     TextView nameuser;
+    Button all,pizza,hamburger,sushi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_delivery_food);
         getSupportActionBar().hide();
-
-        setContentView(R.layout.activity_ingredient);
-
-        DrawerLayout drawerLayout = findViewById(R.id.drawerLayoutIngredient);
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayoutDelivery);
         NavigationView nav=(NavigationView) drawerLayout.findViewById(R.id.navigationView);
         View headerView=nav.getHeaderView(0);
         nameuser=(TextView) headerView.findViewById(R.id.usernames);
@@ -75,6 +66,7 @@ public class IngredientActivity extends AppCompatActivity {
             }
         });
 
+
         findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +74,7 @@ public class IngredientActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -105,23 +98,18 @@ public class IngredientActivity extends AppCompatActivity {
             }
         });
 
-
-
-        listofingredient=new ArrayList<>();
-        ingredientadaptater=new IngredientAdaptater(listofingredient);
-        recyclerView=findViewById(R.id.listOfIngredients);
+        listoffood=new ArrayList<>();
+        foodadaptater=new FoodAdaptater(listoffood);
+        recyclerView=findViewById(R.id.listOfFood);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(ingredientadaptater);
+        recyclerView.setAdapter(foodadaptater);
 
         searchview=findViewById(R.id.searchviews);
         searchview.clearFocus();
 
 
-
-        fAuth = FirebaseAuth.getInstance();
-        fStore=FirebaseFirestore.getInstance();
-        fStore.collection("ingredients").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        fStore.collection("deliveryfoods").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error!=null){
@@ -134,12 +122,21 @@ public class IngredientActivity extends AppCompatActivity {
 
 
                     }*/
-                    IngredientData ingredients=doc.getDocument().toObject(IngredientData.class);
-                    listofingredient.add(ingredients);
-                    ingredientadaptater.notifyDataSetChanged();
+                    FoodData foods=doc.getDocument().toObject(FoodData.class);
+                    listoffood.add(foods);
+                    foodadaptater.notifyDataSetChanged();
                 }
             }
         });
+
+        pizza=findViewById(R.id.pizzaButton2);
+        hamburger=findViewById(R.id.burgerButton);
+        all=findViewById(R.id.allButton);
+        sushi=findViewById(R.id.sushiButton);
+        openButton(pizza,"Pizza");
+        openButton(hamburger,"Burger");
+        openButton(all,"");
+        openButton(sushi,"Sushi");
 
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -157,18 +154,16 @@ public class IngredientActivity extends AppCompatActivity {
 
 
     }
-
-
-
     public void logout(){
         FirebaseAuth.getInstance().signOut();
         startActivity((new Intent(getApplicationContext(),LoginActivity.class)));
         finish();
     }
 
+
     private void filterList(String text){
-        List<IngredientData> filterList=new ArrayList<>();
-        for(IngredientData item:listofingredient){
+        List<FoodData> filterList=new ArrayList<>();
+        for(FoodData item:listoffood){
             if(item.getName().toLowerCase().contains(text.toLowerCase())){
                 filterList.add(item);
             }
@@ -176,13 +171,30 @@ public class IngredientActivity extends AppCompatActivity {
         if(filterList.isEmpty()){
             Toast.makeText(this, "No Data Founded", Toast.LENGTH_SHORT).show();
         }else{
-        ingredientadaptater.setList(filterList);
+            foodadaptater.setList(filterList);
         }
 
 
     }
+    private void openButton(Button btn,String request){
 
-
-
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<FoodData> filterList=new ArrayList<>();
+                for(FoodData item:listoffood){
+                    if(item.getCategory().toLowerCase().contains(request.toLowerCase())){
+                        filterList.add(item);
+                    }
+                }
+                if(filterList.isEmpty()){
+                    Toast.makeText(DeliveryFoodActivity.this, "NO DATA FOUND", Toast.LENGTH_SHORT).show();
+                }else{
+                    foodadaptater.setList(filterList);
+                }
+            }
+        });
     }
 
+
+}
