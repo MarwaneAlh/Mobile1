@@ -36,7 +36,7 @@
                 app:layout_constraintHorizontal_bias="0.267"
                 app:layout_constraintStart_toEndOf="@+id/imageIngredients"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.323" />
+                app:layout_constraintVertical_bias="0.368" />
 
             <TextView
                 android:id="@+id/nameview"
@@ -56,20 +56,20 @@
 
             <Button
                 android:id="@+id/buyButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="118dp"
+                android:layout_height="53dp"
                 android:text="Add to cart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.947"
+                app:layout_constraintHorizontal_bias="0.967"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/priceview"
-                android:layout_width="93dp"
-                android:layout_height="49dp"
+                android:layout_width="94dp"
+                android:layout_height="29dp"
                 android:fontFamily="@font/bebas_neue"
                 android:text="Price :"
                 android:textColor="#FFFFFF"
@@ -79,7 +79,7 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.737" />
+                app:layout_constraintVertical_bias="0.506" />
 
             <ImageView
                 android:id="@+id/imageIngredients"
@@ -92,6 +92,56 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
                 tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="37dp"
+                android:layout_height="22dp"
+                android:fontFamily="@font/allan_bold"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.466"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.931" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/increasButton"
+                android:layout_width="28dp"
+                android:layout_height="26dp"
+                android:background="@color/design_default_color_primary"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.555"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.928">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/decreasButton"
+                android:layout_width="28dp"
+                android:layout_height="26dp"
+                android:background="@color/design_default_color_primary"
+                android:text="-"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.378"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.928">
+
+            </androidx.appcompat.widget.AppCompatButton>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

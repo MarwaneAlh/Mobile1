@@ -140,6 +140,9 @@ public class DeliveryFoodActivity extends AppCompatActivity {
         openButton(all,"");
         openButton(sushi,"Sushi");
 
+
+
+
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -203,6 +206,8 @@ public class DeliveryFoodActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 
 }

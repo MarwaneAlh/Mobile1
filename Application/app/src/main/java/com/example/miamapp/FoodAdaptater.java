@@ -1,8 +1,10 @@
 package com.example.miamapp;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,6 +42,7 @@ public class FoodAdaptater extends RecyclerView.Adapter<FoodAdaptater.ViewHolder
         holder.resto.setText("By "+list.get(position).getResto());
         Picasso.get().load(list.get(position).getPhoto()).into(holder.imageView);
 
+
     }
 
     @Override
@@ -54,6 +57,11 @@ public class FoodAdaptater extends RecyclerView.Adapter<FoodAdaptater.ViewHolder
         public TextView priceText;
         public ImageView imageView;
         public TextView resto;
+        public TextView quantity;
+        Button decreab,increaseb;
+
+
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             mview=itemView;
@@ -61,6 +69,35 @@ public class FoodAdaptater extends RecyclerView.Adapter<FoodAdaptater.ViewHolder
             priceText=(TextView) mview.findViewById(R.id.priceview);
             imageView=(ImageView) mview.findViewById(R.id.imageIngredients);
             resto=(TextView) mview.findViewById(R.id.restoname);
+            decreab=(Button) mview.findViewById(R.id.decreasButton);
+            increaseb=(Button) mview.findViewById(R.id.increasButton);
+            quantity=mview.findViewById(R.id.quantity);
+            operationfunction(decreab);
+            operationfunction(increaseb);
+
+
+        }
+        public void  operationfunction(Button btn){
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    int numberinit = Integer.parseInt(quantity.getText().toString());
+                    if(btn.getText().equals("-")){
+                        if(!quantity.getText().toString().equals("0")) {
+                                numberinit--;
+                            quantity.setText(String.valueOf(numberinit));
+
+                            notifyDataSetChanged();
+                        }
+                    }else{
+                        numberinit++;
+                        quantity.setText(String.valueOf(numberinit));
+                        notifyDataSetChanged();
+                    }
+                }
+            });
+
         }
 
     }
