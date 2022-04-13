@@ -43,6 +43,7 @@ public class DeliveryFoodActivity extends AppCompatActivity {
     private SearchView searchview;
     TextView nameuser;
     Button all,pizza,hamburger,sushi;
+    TextView filtercategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +134,7 @@ public class DeliveryFoodActivity extends AppCompatActivity {
         hamburger=findViewById(R.id.burgerButton);
         all=findViewById(R.id.allButton);
         sushi=findViewById(R.id.sushiButton);
+        filtercategory=findViewById(R.id.filterText);
         openButton(pizza,"Pizza");
         openButton(hamburger,"Burger");
         openButton(all,"");
@@ -191,6 +193,12 @@ public class DeliveryFoodActivity extends AppCompatActivity {
                     Toast.makeText(DeliveryFoodActivity.this, "NO DATA FOUND", Toast.LENGTH_SHORT).show();
                 }else{
                     foodadaptater.setList(filterList);
+
+                    if(request.equals("")){
+                        filtercategory.setText("FILTER : NONE");
+                    }else{
+                        filtercategory.setText("FILTER : "+request);
+                    }
                 }
             }
         });
