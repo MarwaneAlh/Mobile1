@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,12 +55,43 @@ public class IngredientAdaptater extends RecyclerView.Adapter<IngredientAdaptate
     public TextView nameText;
     public TextView priceText;
     public ImageView imageView;
+        public TextView quantity;
+        Button decreab,increaseb;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             mview=itemView;
             nameText=(TextView) mview.findViewById(R.id.nameview);
             priceText=(TextView) mview.findViewById(R.id.priceview);
             imageView=(ImageView) mview.findViewById(R.id.imageIngredients);
+            decreab=(Button) mview.findViewById(R.id.decreasButton);
+            increaseb=(Button) mview.findViewById(R.id.increasButton);
+            quantity=mview.findViewById(R.id.quantity);
+            operationfunction(decreab);
+            operationfunction(increaseb);
+        }
+
+        public void  operationfunction(Button btn){
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    int numberinit = Integer.parseInt(quantity.getText().toString());
+                    if(btn.getText().equals("-")){
+                        if(!quantity.getText().toString().equals("0")) {
+                            numberinit--;
+                            quantity.setText(String.valueOf(numberinit));
+
+                            notifyDataSetChanged();
+                        }
+                    }else{
+                        numberinit++;
+                        quantity.setText(String.valueOf(numberinit));
+                        notifyDataSetChanged();
+                    }
+                }
+            });
+
         }
 
     }
