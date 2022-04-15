@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".CartActivity"
+            android:exported="false" />
+        <activity
             android:name=".DeliveryFoodActivity"
             android:exported="false" />
         <activity

@@ -84,6 +84,8 @@ public class DeliveryFoodActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         return true;
                     case R.id.ShopCart:
+                        startActivity(new Intent(getApplicationContext(), CartActivity.class));
+                        return true;
                     case R.id.menuRecipes:
                     case R.id.menuDeliveryFood:
                         startActivity(new Intent(getApplicationContext(),DeliveryFoodActivity.class));
@@ -108,6 +110,12 @@ public class DeliveryFoodActivity extends AppCompatActivity {
 
         searchview=findViewById(R.id.searchviews);
         searchview.clearFocus();
+        findViewById(R.id.imageshop).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), CartActivity.class));
+            }
+        });
 
 
         fStore.collection("deliveryfoods").addSnapshotListener(new EventListener<QuerySnapshot>() {
