@@ -93,6 +93,8 @@ public class IngredientActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), CartActivity.class));
                         return true;
                     case R.id.menuRecipes:
+                        startActivity(new Intent(getApplicationContext(),RecipesActivity.class));
+                        return true;
                     case R.id.menuDeliveryFood:
                         startActivity(new Intent(getApplicationContext(),DeliveryFoodActivity.class));
                         return true;

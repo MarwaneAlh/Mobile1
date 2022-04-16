@@ -1,62 +1,58 @@
 package com.example.miamapp;
 
-import static android.content.ContentValues.TAG;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class CartActivity extends AppCompatActivity {
+public class RecipesActivity extends AppCompatActivity {
 
-    TextView nameuser;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore ;
-    RecyclerView recyclerView;
-    private List<CartData> listofitem;
-    CartAdaptater cartadaptater;
-    TextView allprice;
-    double pricett;
-
-
+    TextView nameuser;
+    String url ="https://api.spoonacular.com/recipes/716429" +
+            "/information?includeNutrition=false?&apiKey=e778f2da2efe4c31a2c0151e0ac2e79e";
+    TextView recipesdata;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_main);
-        setContentView(R.layout.activity_cart);
+        setContentView(R.layout.activity_recipes);
 
-        DrawerLayout drawerLayout = findViewById(R.id.drawerLayoutCart);
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayoutRecipes);
         NavigationView nav=(NavigationView) drawerLayout.findViewById(R.id.navigationView);
         View headerView=nav.getHeaderView(0);
         nameuser=(TextView) headerView.findViewById(R.id.usernames);
         fAuth = FirebaseAuth.getInstance();
-        fStore= FirebaseFirestore.getInstance();
+        fStore=FirebaseFirestore.getInstance();
+
         String userID;
         userID=fAuth.getCurrentUser().getUid();
         DocumentReference documentReference=fStore.collection("users").document(userID);
@@ -75,8 +71,6 @@ public class CartActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-
-
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -87,10 +81,10 @@ public class CartActivity extends AppCompatActivity {
                     case R.id.ShopCart:
                         startActivity(new Intent(getApplicationContext(), CartActivity.class));
                         return true;
-                    case R.id.menuRecipes:
+                        case R.id.menuRecipes:
                         startActivity(new Intent(getApplicationContext(),RecipesActivity.class));
                         return true;
-                    case R.id.menuDeliveryFood:
+                        case R.id.menuDeliveryFood:
                         startActivity(new Intent(getApplicationContext(),DeliveryFoodActivity.class));
                         return true;
                     case R.id.Ingredient:
@@ -104,58 +98,36 @@ public class CartActivity extends AppCompatActivity {
             }
         });
 
-        listofitem=new ArrayList<>();
-        pricett=0;
-        cartadaptater=new CartAdaptater(listofitem);
-        recyclerView=findViewById(R.id.listofitem);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(cartadaptater);
-        allprice=findViewById(R.id.totalPrice);
-
-
-
-        fStore.collection("cart").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        findViewById(R.id.imageshop).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if(error!=null){
-                    Log.d(TAG,"EROOR here there is impossible"+ error.getMessage());
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), CartActivity.class));
+            }
+        });
+        recipesdata=findViewById(R.id.recipesdata);
+        RequestQueue queue= Volley.newRequestQueue(RecipesActivity.this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,
+                null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    recipesdata.setText(response.getString("title"));
+
+
+
+                } catch(JSONException e){
+                    e.printStackTrace();
                 }
-
-
-                pricett=0;
-                for(DocumentSnapshot doc:value.getDocuments()){
-                    String name = doc.get("name").toString();
-
-
-                    if(!name.equals("null")){
-                        CartData cartitems=doc.toObject(CartData.class);
-
-                        listofitem.add(cartitems);
-
-
-                        pricett+=Double.parseDouble(doc.get("quantity").toString())*Double.parseDouble(doc.get("price").toString());
-                        double roundprice=Math.round(pricett*100.0)/100.0;
-                        allprice.setText("TOTAL PRICE: "+ String.valueOf(roundprice)+" "+doc.get("device"));
-                        Log.d("VALUE :",String.valueOf(roundprice));
-                        cartadaptater.notifyDataSetChanged();
-                        Log.d("SIZE",String.valueOf(listofitem.size()));
-
-
-
-                    }
-
-                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(RecipesActivity.this,"ERROR TO LOAD JSON FILE",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
-
-
-
-
-
-
-
+        queue.add(jsonObjectRequest);
 
     }
 

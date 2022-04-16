@@ -1,5 +1,6 @@
 package com.example.miamapp;
 
+import android.app.Application;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ public class CartAdaptater extends RecyclerView.Adapter<CartAdaptater.ViewHolder
     public List<CartData> list;
 
     public CartAdaptater(List<CartData> listofitem) {
+
         this.list=listofitem;
     }
 
@@ -39,10 +41,13 @@ public class CartAdaptater extends RecyclerView.Adapter<CartAdaptater.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull CartAdaptater.ViewHolder holder, int position) {
         holder.nameText.setText(list.get(position).getName());
-        holder.priceText.setText(list.get(position).getPrice()+" "+list.get(position).getDevice());
-        holder.quantity.setText(list.get(position).getQuantity());
+        double pricetoround=Double.parseDouble(list.get(position).getPrice())*Double.parseDouble(list.get(position).getQuantity());
+        double roundtwodigit=Math.round(pricetoround*100.0)/100.0;
 
-        //holder.quantity
+        holder.priceText.setText(roundtwodigit+" "+list.get(position).getDevice());
+        holder.quantity.setText("X"+list.get(position).getQuantity());
+
+
     }
 
     @Override
@@ -60,6 +65,8 @@ public class CartAdaptater extends RecyclerView.Adapter<CartAdaptater.ViewHolder
         Button decreab,increaseb,deletebtn;
         FirebaseAuth fAuth;
         FirebaseFirestore fStore ;
+        TextView pricett;
+
 
 
 
@@ -72,8 +79,6 @@ public class CartAdaptater extends RecyclerView.Adapter<CartAdaptater.ViewHolder
             decreab=(Button) mview.findViewById(R.id.decreasButton);
             increaseb=(Button) mview.findViewById(R.id.increasButton);
             quantity=mview.findViewById(R.id.quantity);
-            operationfunction(decreab);
-            operationfunction(increaseb);
             fAuth = FirebaseAuth.getInstance();
             fStore= FirebaseFirestore.getInstance();
             deletebtn=mview.findViewById(R.id.deletebtn);
@@ -82,27 +87,6 @@ public class CartAdaptater extends RecyclerView.Adapter<CartAdaptater.ViewHolder
 
 
 
-        }
-        public void  operationfunction(Button btn){
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    int numberinit = Integer.parseInt(quantity.getText().toString());
-                    if(btn.getText().equals("-")){
-                        if(!quantity.getText().toString().equals("0")) {
-                            numberinit--;
-                            quantity.setText(String.valueOf(numberinit));
-
-                            notifyDataSetChanged();
-                        }
-                    }else{
-                        numberinit++;
-                        quantity.setText(String.valueOf(numberinit));
-                        notifyDataSetChanged();
-                    }
-                }
-            });
 
         }
 

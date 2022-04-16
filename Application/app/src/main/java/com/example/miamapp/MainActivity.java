@@ -54,13 +54,11 @@ import java.util.ArrayList;
 //Ici est executé une requete vers l'api spooncular
 
 public class MainActivity extends AppCompatActivity {
-    String url ="https://api.spoonacular.com/recipes/716429" +
-            "/information?includeNutrition=false?&apiKey=e778f2da2efe4c31a2c0151e0ac2e79e";
     FirebaseAuth fAuth;
     FirebaseFirestore fStore ;
     TextView nameuser;
     Button open_ingredient_windows;
-    Button open_delivery_windows;
+    Button open_delivery_windows,open_recipes_windows;
 
 
 
@@ -122,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), CartActivity.class));
                         return true;
                     case R.id.menuRecipes:
+                        startActivity(new Intent(getApplicationContext(),RecipesActivity.class));
+                        return true;
                     case R.id.menuDeliveryFood:
                         startActivity(new Intent(getApplicationContext(),DeliveryFoodActivity.class));
                         return true;
@@ -151,34 +151,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-       /* RequestQueue queue= Volley.newRequestQueue(MainActivity.this);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,
-                null, new Response.Listener<JSONObject>() {
+        open_recipes_windows=findViewById(R.id.recipesButton);
+        open_recipes_windows.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    t.setText(response.getString("title"));
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),RecipesActivity.class));
 
-
-
-                } catch(JSONException e){
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this,"ERROR TO LOAD JSON FILE",
-                        Toast.LENGTH_SHORT).show();
             }
         });
 
-        queue.add(jsonObjectRequest);
 
-*/
+
     }
     public void logout(){
         FirebaseAuth.getInstance().signOut();
