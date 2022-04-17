@@ -13,6 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".PopActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PopMe"/>
+        <activity
+            android:name=".ToBuyActivity"
+            android:exported="false" />
+        <activity
             android:name=".RecipesActivity"
             android:exported="false" />
         <activity

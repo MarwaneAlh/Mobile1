@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,7 @@ public class CartActivity extends AppCompatActivity {
     CartAdaptater cartadaptater;
     TextView allprice;
     double pricett;
+    Button payButton;
 
 
 
@@ -146,6 +148,16 @@ public class CartActivity extends AppCompatActivity {
                     }
 
                 }
+            }
+        });
+        payButton=findViewById(R.id.payButton);
+        payButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent o = new Intent(CartActivity.this,ToBuyActivity.class);
+                o.putExtra("PRICE_VALUE",allprice.getText().toString());
+                o.putExtra("NAME_USER",nameuser.getText().toString());
+                startActivity(o);
             }
         });
 
