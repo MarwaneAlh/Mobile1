@@ -86,7 +86,7 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="register"
-            android:textColor="#777" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/connexiontext"
