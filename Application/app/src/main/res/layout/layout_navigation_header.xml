@@ -32,17 +32,20 @@
 
     <TextView
         android:id="@+id/usernames"
-        android:layout_width="114dp"
-        android:layout_height="42dp"
+        android:layout_width="127dp"
+        android:layout_height="64dp"
 
-        android:layout_marginStart="88dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="96dp"
         android:text=""
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageprofile" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageprofile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.863" />
 
     <TextView
         android:id="@+id/textView"
@@ -53,9 +56,9 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.036"
         app:layout_constraintStart_toEndOf="@+id/imageprofile"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.172" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
