@@ -88,23 +88,22 @@
                 android:gravity="center"
                 android:textSize="34sp" />
 
-            <TextView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recipesdata"
-                android:layout_width="335dp"
-                android:layout_height="320dp"
+                android:layout_width="385dp"
+                android:layout_height="572dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="41dp"
-                android:layout_marginTop="127dp"
-                android:layout_marginEnd="42dp"
-                android:layout_marginBottom="233dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="73dp"
+                android:layout_marginEnd="21dp"
+                android:layout_marginBottom="35dp"
                 android:fontFamily="@font/bebas_neue"
                 android:gravity="center"
-                android:text="RECIPESDATA"
                 android:textColor="#FFFFFF"
-                android:textSize="34sp" />
+                android:textSize="34sp"></androidx.recyclerview.widget.RecyclerView>
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

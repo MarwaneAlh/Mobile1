@@ -5,9 +5,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -27,17 +31,22 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecipesActivity extends AppCompatActivity {
 
     FirebaseAuth fAuth;
     FirebaseFirestore fStore ;
     TextView nameuser;
-    String url ="https://api.spoonacular.com/recipes/716429" +
-            "/information?includeNutrition=false?&apiKey=e778f2da2efe4c31a2c0151e0ac2e79e";
-    TextView recipesdata;
+    String url ="https://api.spoonacular.com/recipes/random?number=5&&apiKey=e778f2da2efe4c31a2c0151e0ac2e79e";
+    private List<RecipesData> recipeslist;
+    RecipesAdaptater recipesadaptater;
+    RecyclerView recyclerView;
 
 
     @Override
@@ -104,15 +113,36 @@ public class RecipesActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), CartActivity.class));
             }
         });
-        recipesdata=findViewById(R.id.recipesdata);
+
+
+        recipeslist=new ArrayList<>();
+        recipesadaptater=new RecipesAdaptater(recipeslist);
+        recyclerView=findViewById(R.id.recipesdata);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(recipesadaptater);
+
+
+
+
         RequestQueue queue= Volley.newRequestQueue(RecipesActivity.this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,
                 null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    recipesdata.setText(response.getString("title"));
+                    JSONArray recipes= response.getJSONArray("recipes");
+                    for(int i=0;i<recipes.length();i++) {
+                        JSONObject currentrecipes = recipes.getJSONObject(i);
+                        RecipesData r = new RecipesData(currentrecipes.getString("title"),
+                                "HealthScore : "+currentrecipes.getString("healthScore"),
+                                "Time : "+currentrecipes.getString("readyInMinutes")+" minutes",
+                                currentrecipes.getString("image"),
+                                Html.fromHtml(currentrecipes.getString("instructions")).toString());
+                        recipeslist.add(r);
+                        recipesadaptater.notifyDataSetChanged();
 
+                    }
 
 
                 } catch(JSONException e){

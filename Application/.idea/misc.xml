@@ -52,7 +52,7 @@
         <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/drawable/search_view_bg.xml" value="0.195" />
         <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/layout/activity_cart.xml" value="0.1" />
         <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/layout/activity_delivery_food.xml" value="0.33" />
-        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/layout/activity_ingredient.xml" value="0.1" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/layout/activity_ingredient.xml" value="0.25" />
         <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/layout/activity_login.xml" value="0.29791666666666666" />
         <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/layout/activity_pop.xml" value="0.29791666666666666" />
@@ -64,6 +64,7 @@
         <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/layout/viewcartitem.xml" value="0.536" />
         <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/layout/viewfoodsitems.xml" value="0.284375" />
         <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/layout/viewitems.xml" value="0.5" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/layout/viewrecipes.xml" value="0.33" />
         <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/menu/navigation_menu.xml" value="0.38697916666666665" />
       </map>
     </option>
