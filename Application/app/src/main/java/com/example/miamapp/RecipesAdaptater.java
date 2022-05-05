@@ -86,36 +86,51 @@ public class RecipesAdaptater extends RecyclerView.Adapter<RecipesAdaptater.View
         }
 
         public void addCartRecipesItem(Button btn ){
+            Random rand = new Random();
+            double maxrange=10;
+
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Random rand = new Random();
-                    int int_random = rand.nextInt(100);
+
+                    String namedocument;
+
+                    String getdevice="$";
+                    String quantity="1";
+
+                    userID=fAuth.getCurrentUser().getUid();
+
                     for(int i =0;i<list.size();i++){
                         if(list.get(i).getTitle().equals(nameview.getText())){
                         for(int j=0;j<list.get(i).getIngredientsrecipes().size();j++) {
-                            Log.d("beta : ",list.get(i).getIngredientsrecipes().get(j).getName());
+                            double int_random = 0+(maxrange-0)*rand.nextDouble();
+                            String getprice=String.valueOf(int_random);
+
+                        namedocument=list.get(i).getIngredientsrecipes().get(j).getName();
+                            DocumentReference documentReference=fStore.collection("cart").document(namedocument+" item");
+                            Map<String, Object> docData = new HashMap<>();
+                            docData.put("name", namedocument);
+                            docData.put("price",getprice);
+                            docData.put("device", getdevice);
+                            docData.put("quantity",quantity);
+                            documentReference.set(docData);
+
+                           // Toast.makeText(itemView.getContext(), "Added to cart", Toast.LENGTH_SHORT).show();
+                            //Log.d("beta : ",list.get(i).getIngredientsrecipes().get(j).getName());
 
                         }
                         }
 
                     }
-                    userID=fAuth.getCurrentUser().getUid();
-                    String namedocument="test"+int_random+" item";
-                    String getprice = String.valueOf(int_random);
-                    String getdevice="$";
-                    String onlyprice=getprice;
-                    String quantity="1";
-                    DocumentReference documentReference=fStore.collection("cart").document(namedocument);
-                    Map<String, Object> docData = new HashMap<>();
-                    docData.put("name", namedocument);
-                    docData.put("price",onlyprice);
-                    //docData.put("photo", imageView.getText().toString());
-                    docData.put("device", getdevice);
-                    docData.put("quantity",quantity);
-                    documentReference.set(docData);
 
-                    Toast.makeText(itemView.getContext(), "Added to cart", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+                    //docData.put("photo", imageView.getText().toString());
+
                 }
             });
         }

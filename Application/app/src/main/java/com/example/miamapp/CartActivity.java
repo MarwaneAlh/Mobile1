@@ -42,6 +42,7 @@ public class CartActivity extends AppCompatActivity {
     TextView allprice;
     double pricett;
     Button payButton;
+    Button clearAllbtn;
 
 
 
@@ -139,9 +140,7 @@ public class CartActivity extends AppCompatActivity {
                         pricett+=Double.parseDouble(doc.get("quantity").toString())*Double.parseDouble(doc.get("price").toString());
                         double roundprice=Math.round(pricett*100.0)/100.0;
                         allprice.setText("TOTAL PRICE: "+ String.valueOf(roundprice)+" "+doc.get("device"));
-                        Log.d("VALUE :",String.valueOf(roundprice));
                         cartadaptater.notifyDataSetChanged();
-                        Log.d("SIZE",String.valueOf(listofitem.size()));
 
 
 
@@ -160,11 +159,6 @@ public class CartActivity extends AppCompatActivity {
                 startActivity(o);
             }
         });
-
-
-
-
-
 
 
 

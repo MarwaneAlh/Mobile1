@@ -64,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //todeletecart();
         super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
@@ -190,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
                             Log.d(TAG,"Name to delete "+""+test);
                             fStore.collection("cart").document(test).delete();
+                            //notify();
 
                         }else {
                             Log.d(TAG, "Name " + "" + name);

@@ -95,7 +95,7 @@ public class CartAdaptater extends RecyclerView.Adapter<CartAdaptater.ViewHolder
                 @Override
                 public void onClick(View view) {
 
-                    Log.d("TODELETE",nameText.getText().toString());
+
                     fStore.collection("cart").document(nameText.getText().toString()+" item").delete();
                     list.clear();
                     notifyDataSetChanged();

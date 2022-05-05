@@ -137,7 +137,9 @@ public class RecipesActivity extends AppCompatActivity {
                     for(int i=0;i<recipes.length();i++) {
                         JSONObject currentrecipes = recipes.getJSONObject(i);
                             JSONArray ingredientsrecipes=currentrecipes.getJSONArray("extendedIngredients");
+                            list=new ArrayList<>();
                             for(int j=0;j<ingredientsrecipes.length();j++ ){
+
                                 Random r =new Random();
                                 int price= r.nextInt(10);
                                 //Log.d("FAIS",ingredientsrecipes.getJSONObject(j).getString("name"));
