@@ -37,6 +37,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RecipesActivity extends AppCompatActivity {
 
@@ -132,13 +133,29 @@ public class RecipesActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 try {
                     JSONArray recipes= response.getJSONArray("recipes");
+                    List<IngredientData> list= new ArrayList<>();
                     for(int i=0;i<recipes.length();i++) {
                         JSONObject currentrecipes = recipes.getJSONObject(i);
+                            JSONArray ingredientsrecipes=currentrecipes.getJSONArray("extendedIngredients");
+                            for(int j=0;j<ingredientsrecipes.length();j++ ){
+                                Random r =new Random();
+                                int price= r.nextInt(10);
+                                //Log.d("FAIS",ingredientsrecipes.getJSONObject(j).getString("name"));
+                                IngredientData ingredient = new IngredientData("$",
+                                        ingredientsrecipes.getJSONObject(j).getString("name"),
+                                        String.valueOf(price),
+                                        "1");
+                                list.add(ingredient);
+                            }
+
                         RecipesData r = new RecipesData(currentrecipes.getString("title"),
                                 "HealthScore : "+currentrecipes.getString("healthScore"),
                                 "Time : "+currentrecipes.getString("readyInMinutes")+" minutes",
                                 currentrecipes.getString("image"),
-                                Html.fromHtml(currentrecipes.getString("instructions")).toString());
+                                Html.fromHtml(currentrecipes.getString("instructions")).toString(),
+                                list);
+
+
                         recipeslist.add(r);
                         recipesadaptater.notifyDataSetChanged();
 
