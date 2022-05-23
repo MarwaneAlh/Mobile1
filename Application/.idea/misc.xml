@@ -70,6 +70,25 @@
         <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/layout/viewitems.xml" value="0.5" />
         <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/layout/viewrecipes.xml" value="0.33" />
         <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/MOBILEV2/Mobile1/Application/app/src/main/res/menu/navigation_menu.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout-land/activity_cart.xml" value="0.2" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout-land/activity_delivery_food.xml" value="0.176" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout-land/activity_ingredient.xml" value="0.263668430335097" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout-land/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout-land/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout-land/activity_recipes.xml" value="0.2328159645232816" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout-land/activity_register.xml" value="0.263668430335097" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout-sw600dp/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout/activity_cart.xml" value="0.264" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout/activity_delivery_food.xml" value="0.264" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout/activity_ingredient.xml" value="0.1514690982776089" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout/activity_login.xml" value="0.1514690982776089" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout/activity_main.xml" value="0.136" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout/activity_pop.xml" value="0.1514690982776089" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout/activity_recipes.xml" value="0.2" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout/activity_register.xml" value="0.1514690982776089" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout/activity_to_buy.xml" value="0.1514690982776089" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout/viewitems.xml" value="0.1" />
+        <entry key="..\:/Users/Marwa/OneDrive/Bureau/projetHelb/Mobile6/Mobile1/Application/app/src/main/res/layout/viewrecipes.xml" value="0.15353260869565216" />
       </map>
     </option>
   </component>
@@ -78,5 +97,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.136" />
+      </ProjectState>
+    </option>
   </component>
 </project>

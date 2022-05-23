@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_weight="4"
+            android:src="@drawable/ic_login"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="526dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Register"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="700dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_corner"
+            android:hint="Email"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:textColor="#fff"
+            android:textColorHint="#eee"
+            android:textSize="17sp"
+            android:drawableLeft="@drawable/email_icon"/>/>
+
+        <EditText
+            android:id="@+id/fullName"
+            android:layout_width="700dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_corner"
+            android:hint="Full Name"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:textColor="#fff"
+            android:textColorHint="#eee"
+            android:textSize="17sp"
+            android:drawableLeft="@drawable/field_user_icon"/>/>
+
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="700dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_corner"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:textColor="#fff"
+            android:textColorHint="#eee"
+            android:textSize="17sp"
+            android:drawableLeft="@drawable/lock_icon"/>/>
+
+        <Button
+            android:id="@+id/connexionBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/rounded_corner_button"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="register"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/connexiontext"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:text="Déja inscrit connecte toi ici !."
+            android:textColor="#fff" />
+    </LinearLayout>
+
+
+</RelativeLayout>

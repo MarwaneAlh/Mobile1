@@ -41,10 +41,12 @@ import java.util.Random;
 
 public class RecipesActivity extends AppCompatActivity {
 
+    String url ="https://api.spoonacular.com/recipes/random?number=5&" +
+            "&apiKey=e778f2da2efe4c31a2c0151e0ac2e79e";
     FirebaseAuth fAuth;
     FirebaseFirestore fStore ;
     TextView nameuser;
-    String url ="https://api.spoonacular.com/recipes/random?number=5&&apiKey=e778f2da2efe4c31a2c0151e0ac2e79e";
+
     private List<RecipesData> recipeslist;
     RecipesAdaptater recipesadaptater;
     RecyclerView recyclerView;
@@ -139,10 +141,8 @@ public class RecipesActivity extends AppCompatActivity {
                             JSONArray ingredientsrecipes=currentrecipes.getJSONArray("extendedIngredients");
                             list=new ArrayList<>();
                             for(int j=0;j<ingredientsrecipes.length();j++ ){
-
                                 Random r =new Random();
                                 int price= r.nextInt(10);
-                                //Log.d("FAIS",ingredientsrecipes.getJSONObject(j).getString("name"));
                                 IngredientData ingredient = new IngredientData("$",
                                         ingredientsrecipes.getJSONObject(j).getString("name"),
                                         String.valueOf(price),

@@ -15,7 +15,7 @@
 
         <LinearLayout
             android:id="@+id/layoutToolBar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="?actionBarSize"
             android:background="#632A95"
             android:gravity="center_vertical"
@@ -40,7 +40,7 @@
                 ></ImageView>
 
             <ImageView
-                android:layout_width="296dp"
+                android:layout_width="637dp"
                 android:layout_height="180dp"
                 android:layout_gravity="center"
                 android:src="@drawable/logoapp">
@@ -59,11 +59,10 @@
         </LinearLayout>
 
 
-
         <RelativeLayout
             android:id="@+id/relativeLayout"
-            android:layout_width="418dp"
-            android:layout_height="680dp"
+            android:layout_width="0dp"
+            android:layout_height="765dp"
             android:background="@drawable/ic_wave__2_"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -74,16 +73,16 @@
 
             <TextView
                 android:id="@+id/cartText"
-                android:layout_width="wrap_content"
-                android:layout_height="46dp"
+                android:layout_width="346dp"
+                android:layout_height="68dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="128dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="151dp"
-                android:layout_marginBottom="625dp"
+                android:layout_marginStart="196dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="207dp"
+                android:layout_marginBottom="707dp"
                 android:fontFamily="@font/bebas_neue"
                 android:gravity="center"
                 android:text="MyCart"
@@ -92,49 +91,49 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listofitem"
-                android:layout_width="wrap_content"
-                android:layout_height="471dp"
+                android:layout_width="525dp"
+                android:layout_height="185dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="146dp"
                 android:layout_marginTop="116dp"
-                android:layout_marginEnd="43dp"
-                android:layout_marginBottom="93dp">
+                android:layout_marginEnd="173dp"
+                android:layout_marginBottom="464dp">
 
             </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/totalPrice"
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="43dp"
+                android:layout_width="366dp"
+                android:layout_height="44dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="586dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginBottom="51dp"
+                android:layout_marginStart="219dp"
+                android:layout_marginTop="73dp"
+                android:layout_marginEnd="259dp"
+                android:layout_marginBottom="648dp"
                 android:fontFamily="@font/bebas_neue"
+                android:gravity="center"
                 android:text="Total Price :NONE"
                 android:textColor="#000000"
                 android:textSize="34sp" />
 
             <Button
                 android:id="@+id/payButton"
-                android:layout_width="117dp"
-                android:layout_height="36dp"
+                android:layout_width="119dp"
+                android:layout_height="57dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="260dp"
-                android:layout_marginTop="629dp"
-                android:layout_marginEnd="41dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginStart="462dp"
+                android:layout_marginTop="74dp"
+                android:layout_marginEnd="168dp"
+                android:layout_marginBottom="651dp"
                 android:text="Pay" />
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
